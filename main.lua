@@ -18,10 +18,10 @@ function love.load()
     world:addCollisionClass('platform')
     world:addCollisionClass('player' --[[, {ignores = {'platform'}}]])
     world:addCollisionClass('danger')
-    player = world:newRectangleCollider(360, 100, 80, 80, {collision_class = "player"})
+    player = world:newRectangleCollider(360, 100, 40, 100, {collision_class = "player"})
     player:setFixedRotation(true)
     player.speed = 240
-    player.animation = animations.run
+    player.animation = animations.idle
 
     platform = world:newRectangleCollider(250, 400, 300, 100, {collision_class = "platform"})
     platform:setType('static')
@@ -54,14 +54,18 @@ end
 
 function love.draw()
     world:draw()
-    player.animation:draw(sprites.playerSheet, 0, 0)
+    if player then
+        local px, py = player:getPosition()
+        player.animation:draw(sprites.playerSheet, px, py, nil, 0.25, nil, 130, 300)
+    end
+
 end
 
 function love.keypressed(key)
     if key == 'space' then
-        local colliders = world:queryRectangleArea(player:getX() - 40, player:getY()+40, 80, 2, {'platform'})
+        local colliders = world:queryRectangleArea(player:getX() - 20, player:getY()+50, 80, 2, {'platform'})
         if #colliders > 0 then
-            player:applyLinearImpulse(0, -6000)
+            player:applyLinearImpulse(0, -4000)
         end
     end
 end
