@@ -1,4 +1,6 @@
 function love.load()
+    love.window.setMode(1000, 768)
+
     anim8 = require "libraries/anim8/anim8"
     sprites = {}
     sprites.playerSheet = love.graphics.newImage('sprites/playerSheet.png')
