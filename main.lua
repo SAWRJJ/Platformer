@@ -18,16 +18,17 @@ function love.load()
     world = wf.newWorld(0, 800, false) 
     world:setQueryDebugDrawing(true)
 
-    world:addCollisionClass('platform')
+    world:addCollisionClass('Platforms')
     world:addCollisionClass('player' --[[, {ignores = {'platform'}}]])
     world:addCollisionClass('danger')
 
     require('player')
-    platform = world:newRectangleCollider(250, 400, 300, 100, {collision_class = "platform"})
-    platform:setType('static')
 
-    dangerZone = world:newRectangleCollider(0, 550, 800, 50, {collision_class = "danger"})
-    dangerZone:setType('static')
+
+    -- dangerZone = world:newRectangleCollider(0, 550, 800, 50, {collision_class = "danger"})
+    -- dangerZone:setType('static')
+
+    platforms = {}
 
     loadMap()
 end
@@ -56,13 +57,24 @@ end
 
 function love.mousepressed(x, y, button)
     if button == 1 then
-        local colliders = world:queryCircleArea(x, y, 200, {'platform', 'danger'})
+        local colliders = world:queryCircleArea(x, y, 200, {'Platforms', 'danger'})
         for i,c in ipairs(colliders) do
             c:destory()
         end
     end
 end
 
+function spawnPlatform(x, y, width, height)
+    if width> 0 and height>0 then
+        local platform = world:newRectangleCollider(x, y, width, height, {collision_class = "Platforms"})
+        platform:setType('static')
+        table.insert(platforms, platform)
+    end
+end
+
 function loadMap()
     gameMap = sti("maps/level1.lua")
+    for i, obj in pairs(gameMap.layers["Platforms"].objects) do
+        spawnPlatform(obj.x, obj.y ,obj.width, obj.height)
+    end
 end

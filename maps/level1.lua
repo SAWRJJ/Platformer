@@ -9,8 +9,8 @@ return {
   height = 12,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 3,
-  nextobjectid = 1,
+  nextlayerid = 5,
+  nextobjectid = 17,
   properties = {},
   tilesets = {
     {
@@ -55,7 +55,7 @@ return {
       class = "",
       visible = true,
       opacity = 1,
-      offsetx = 308,
+      offsetx = 0,
       offsety = 0,
       parallaxx = 1,
       parallaxy = 1,
@@ -74,6 +74,48 @@ return {
         0, 0, 0, 4, 5, 5, 5, 5, 5, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 4, 5, 5, 5, 5, 5, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 4, 5, 5, 5, 5, 5, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 4,
+      name = "Platforms",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 14,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 192,
+          y = 320,
+          width = 512,
+          height = 448,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 896,
+          y = 448,
+          width = 512,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
       }
     }
   }
